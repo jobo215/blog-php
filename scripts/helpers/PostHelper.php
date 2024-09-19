@@ -16,4 +16,12 @@ class PostHelper
         return date('d.m.Y', $timeDate);
     }
 
+    public static function getPostsByCategoryId($categoryId)
+    {
+        $stmt = Database::getInstance()->getConnection()->prepare("SELECT post.id, post.title, post.content, post.created_date, category.category_title, CONCAT(users.first_name, ' ', users.last_name) as author FROM post INNER JOIN category ON post.category = category.id INNER JOIN users ON post.creator = users.id WHERE category.id = ?");
+        $stmt->bind_param("i", $categoryId);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+
 }

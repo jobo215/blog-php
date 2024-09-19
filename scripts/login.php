@@ -9,9 +9,9 @@ if (isset($_POST) && isset($_POST['username']) && isset($_POST['password'])) {
     if (UserHelper::login($_POST['username'], $_POST['password']) != null) {
         SessionHelper::setUserLoggedIn();
         ValidationHelper::hideLoginError();
-        RedirectionHelper::redirectToPostsPage();
+        header("Location: ../posts/posts.php");
     } else {
         ValidationHelper::setLoginError();
-        RedirectionHelper::redirectToLoginPage();
+        header("Location: ../public/login.php");
     }
 }

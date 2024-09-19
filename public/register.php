@@ -57,7 +57,7 @@ ValidationHelper::hideRegistrationMessagesOnRedirect();
 
             <?php if ((isset($_SESSION['ERROR']['REGISTER_ERROR']) && $_SESSION['ERROR']['REGISTER_ERROR']) || (isset($_SESSION['SUCCESS']['REGISTER_SUCCESS']) && $_SESSION['SUCCESS']['REGISTER_SUCCESS'])): ?>
                 <div class="alert <?= $_SESSION['ERROR']['REGISTER_ERROR'] ? "alert-invalid" : "alert-valid" ?>">
-                    <strong>Error!</strong>
+                    <strong><?= $_SESSION['ERROR']['REGISTER_ERROR'] ? "Error!" : "Success!" ?></strong>
                     <?= $_SESSION['ERROR']['REGISTER_ERROR'] ? $_SESSION['ERROR']['REGISTER_ERROR_MESSAGE'] : $_SESSION['SUCCESS']['REGISTER_SUCCESS_MESSAGE'] ?>
                 </div>
             <?php endif ?>

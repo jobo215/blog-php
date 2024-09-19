@@ -32,10 +32,12 @@ class ValidationHelper
     public static function hideLoginMessageOnRedirect()
     {
         ValidationHelper::setSession();
-        $path = explode("/", $_SERVER['HTTP_REFERER']);
-        $page = $path[count($path) - 1];
-        if ($page != "login.php") {
-            $_SESSION['ERROR']['LOGIN_ERROR'] = false;
+        if (isset($_SERVER['HTTP_REFERER'])) {
+            $path = explode("/", $_SERVER['HTTP_REFERER']);
+            $page = $path[count($path) - 1];
+            if ($page != "login.php") {
+                $_SESSION['ERROR']['LOGIN_ERROR'] = false;
+            }
         }
     }
 

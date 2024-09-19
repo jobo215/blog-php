@@ -1,3 +1,3 @@
 <?php
 include './scripts/helpers/RedirectionHelper.php';
-RedirectionHelper::redirectToLoginPage();
+header("Location: ./public/login.php");

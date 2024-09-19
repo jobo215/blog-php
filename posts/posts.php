@@ -1,7 +1,9 @@
 <?php
 include '../scripts/helpers/PostHelper.php';
 include '../scripts/db/Database.php';
-$posts = PostHelper::getPosts();
+include '../scripts/helpers/CategoryHelper.php';
+$categories = CategoryHelper::getCategories();
+$posts = isset($_GET['category']) ? PostHelper::getPostsByCategoryId($_GET['category']) : PostHelper::getPosts();
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +21,17 @@ $posts = PostHelper::getPosts();
 <body>
     <div class="container">
         <h1 class="page-title">Blog Posts Overview</h1>
+        <div class="category-filter">
+            <label for="categoryDropdown">Filter by Category:</label>
+            <select id="categoryDropdown">
+                <option value="">All Categories</option>
+                <?php foreach ($categories as $category): ?>
+                    <option value="<?= $category['id'] ?>" <?= isset($_GET['category']) && $_GET['category'] == $category['id'] ? "selected" : "" ?>>
+                        <?= $category['category_title'] ?>
+                    </option>
+                <?php endforeach ?>
+            </select>
+        </div>
         <div class="cards-grid">
             <?php foreach ($posts as $post): ?>
                 <a href="./post.php?id=<?= $post['id'] ?>" class="card-link">
