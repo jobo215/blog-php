@@ -1,6 +1,8 @@
 <?php
+include '../scripts/helpers/SessionHelper.php';
 include '../scripts/helpers/ValidationHelper.php';
 SessionHelper::setSession();
+ValidationHelper::hideRegistrationMessagesOnRedirect();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +10,7 @@ SessionHelper::setSession();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Register Form</title>
+    <title>Register Form</title>
     <link rel="stylesheet" href="./css/register.css">
     <link rel="stylesheet" href="./css/style.css">
     <script src="../dist/jquery.js" defer></script>
@@ -53,7 +55,7 @@ SessionHelper::setSession();
                 <input type="password" id="re-password" name="re-password" required>
             </div>
 
-            <?php if (isset($_SESSION['ERROR']['REGISTER_ERROR']) || isset($_SESSION['SUCCESS']['REGISTER_SUCCESS'])): ?>
+            <?php if ((isset($_SESSION['ERROR']['REGISTER_ERROR']) && $_SESSION['ERROR']['REGISTER_ERROR']) || (isset($_SESSION['SUCCESS']['REGISTER_SUCCESS']) && $_SESSION['SUCCESS']['REGISTER_SUCCESS'])): ?>
                 <div class="alert <?= $_SESSION['ERROR']['REGISTER_ERROR'] ? "alert-invalid" : "alert-valid" ?>">
                     <strong>Error!</strong>
                     <?= $_SESSION['ERROR']['REGISTER_ERROR'] ? $_SESSION['ERROR']['REGISTER_ERROR_MESSAGE'] : $_SESSION['SUCCESS']['REGISTER_SUCCESS_MESSAGE'] ?>

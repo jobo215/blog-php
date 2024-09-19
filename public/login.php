@@ -1,6 +1,8 @@
 <?php
 include '../scripts/helpers/SessionHelper.php';
+include '../scripts/helpers/ValidationHelper.php';
 SessionHelper::setSession();
+ValidationHelper::hideLoginMessageOnRedirect();
 ?>
 
 <!DOCTYPE html>

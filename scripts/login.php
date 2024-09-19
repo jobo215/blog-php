@@ -8,6 +8,7 @@ include './helpers/ValidationHelper.php';
 if (isset($_POST) && isset($_POST['username']) && isset($_POST['password'])) {
     if (UserHelper::login($_POST['username'], $_POST['password']) != null) {
         SessionHelper::setUserLoggedIn();
+        ValidationHelper::hideLoginError();
         RedirectionHelper::redirectToPostsPage();
     } else {
         ValidationHelper::setLoginError();

@@ -1,7 +1,8 @@
 $(document).ready(function () {
   var passwordRegex = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?!-*\.).{8,}$/;
 
-  $("#register-button").click(function () {
+  $("#register-button").click(function (event) {
+    event.preventDefault();
     let hasErrors = false;
     let password = $("#password").val();
     if (!passwordRegex.test(password)) {

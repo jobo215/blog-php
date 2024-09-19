@@ -1,7 +1,7 @@
 <?php
 
 include './db/Database.php';
-include '../../models/User.php';
+include '../models/User.php';
 
 class UserHelper
 {
