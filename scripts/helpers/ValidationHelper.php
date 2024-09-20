@@ -41,10 +41,11 @@ class ValidationHelper
         }
     }
 
-    public static function setLoginError()
+    public static function setLoginError($message)
     {
         ValidationHelper::setSession();
         $_SESSION['ERROR']['LOGIN_ERROR'] = true;
+        $_SESSION['ERROR']['LOGIN_ERROR_MESSAGE'] = $message;
     }
 
     public static function hideLoginError()

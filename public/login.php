@@ -27,7 +27,7 @@ ValidationHelper::hideLoginMessageOnRedirect();
             <input type="password" id="password" name="password" required>
             <?php if (isset($_SESSION['ERROR']['LOGIN_ERROR']) && $_SESSION['ERROR']['LOGIN_ERROR']): ?>
                 <div class="alert alert-invalid">
-                    <strong>Error!</strong> Invalid username or password. Please try again!
+                    <strong>Error!</strong> <?= $_SESSION['ERROR']['LOGIN_ERROR_MESSAGE'] ?>
                 </div>
             <?php endif ?>
             <button type="submit">Login</button>

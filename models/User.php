@@ -1,6 +1,7 @@
 <?php
 class User
 {
+    private $id;
     private $firstName;
     private $lastName;
     private $username;
@@ -18,7 +19,9 @@ class User
 
     public static function createUserFromDBAssocArray($arr): User
     {
-        return new User($arr['first_name'], $arr['last_name'], $arr['username'], $arr['email'], $arr['password']);
+        $user = new User($arr['first_name'], $arr['last_name'], $arr['username'], $arr['email'], $arr['password']);
+        $user->setId($arr['id']);
+        return $user;
     }
 
     public function getFirstName(): string
@@ -44,6 +47,16 @@ class User
     public function getPassword(): string
     {
         return $this->password;
+    }
+
+    private function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
 }

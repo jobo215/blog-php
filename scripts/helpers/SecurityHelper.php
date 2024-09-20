@@ -1,0 +1,14 @@
+<?php
+
+class SecurityHelper
+{
+
+    public static function preventUnauthorizedUsers()
+    {
+        if (!SessionHelper::isUserLoggedIn()) {
+            ValidationHelper::setLoginError("You must be logged in to access this page!");
+            header("Location: ../index.php");
+        }
+    }
+
+}

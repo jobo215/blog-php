@@ -6,12 +6,13 @@ include './helpers/RedirectionHelper.php';
 include './helpers/ValidationHelper.php';
 
 if (isset($_POST) && isset($_POST['username']) && isset($_POST['password'])) {
-    if (UserHelper::login($_POST['username'], $_POST['password']) != null) {
-        SessionHelper::setUserLoggedIn();
+    $user = UserHelper::login($_POST['username'], $_POST['password']);
+    if ($user != null) {
+        SessionHelper::setUserLoggedIn($user->getId());
         ValidationHelper::hideLoginError();
         header("Location: ../posts/posts.php");
     } else {
-        ValidationHelper::setLoginError();
+        ValidationHelper::setLoginError("Invalid username or password. Please try again!");
         header("Location: ../public/login.php");
     }
 }

@@ -1,4 +1,11 @@
 <?php
+
+include "../scripts/helpers/SecurityHelper.php";
+include "../scripts/helpers/SessionHelper.php";
+include "../scripts/helpers/ValidationHelper.php";
+
+SecurityHelper::preventUnauthorizedUsers();
+
 include '../scripts/helpers/PostHelper.php';
 include '../scripts/db/Database.php';
 include '../scripts/helpers/CategoryHelper.php';
