@@ -38,6 +38,9 @@ if (isset($_GET) && isset($_GET['id']) && $_GET["id"]) {
 
 <body>
     <div class="container">
+        <?php include './header.php'; ?>
+        <br>
+        <a href="javascript:history.back()" class="back-button">Back</a>
         <?php if ($postID == 0): ?>
             <div class="not-found">
                 <strong>Post Not Found</strong><br>
@@ -95,6 +98,7 @@ if (isset($_GET) && isset($_GET['id']) && $_GET["id"]) {
                 </div>
             </div>
         <?php endif ?>
+        <?php include './footer.php'; ?>
     </div>
 
     <div class="overlay" id="deleteOverlay">

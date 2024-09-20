@@ -27,6 +27,7 @@ $posts = isset($_GET['category']) ? PostHelper::getPostsByCategoryId($_GET['cate
 
 <body>
     <div class="container">
+        <?php include './header.php'; ?>
         <h1 class="page-title">Blog Posts Overview</h1>
         <div class="category-filter">
             <label for="categoryDropdown">Filter by Category:</label>
@@ -52,6 +53,7 @@ $posts = isset($_GET['category']) ? PostHelper::getPostsByCategoryId($_GET['cate
                 </a>
             <?php endforeach ?>
         </div>
+        <?php include './footer.php'; ?>
     </div>
 </body>
 
