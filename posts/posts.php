@@ -53,7 +53,6 @@ $posts = isset($_GET['category']) ? PostHelper::getPostsByCategoryId($_GET['cate
                 </a>
             <?php endforeach ?>
         </div>
-        <?php include './footer.php'; ?>
     </div>
 </body>
 

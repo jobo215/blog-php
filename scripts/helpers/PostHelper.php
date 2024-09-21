@@ -39,4 +39,24 @@ class PostHelper
         $stmt->execute();
     }
 
+    public static function createPost($title, $content, $category, $creator)
+    {
+        $stmt = Database::getInstance()->getConnection()->prepare("INSERT INTO `post`(`title`, `content`, `created_date`, `updated_date`, `category`, `creator`) VALUES (?,?,now(),now(),?,?)");
+        $stmt->bind_param("ssii", $title, $content, $category, $creator);
+        if (!$stmt->execute()) {
+            return null;
+        }
+        return new Post($title, $content, null, $category);
+    }
+
+    public static function editPost($id, $title, $content, $category)
+    {
+        $stmt = Database::getInstance()->getConnection()->prepare("UPDATE `post` SET `title`= ?,`content`= ?,`updated_date`= now(),`category`= ? WHERE `id` = ?");
+        $stmt->bind_param("ssii", $title, $content, $category, $id);
+        if (!$stmt->execute()) {
+            return null;
+        }
+        return new Post($title, $content, null, $category);
+    }
+
 }

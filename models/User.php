@@ -17,34 +17,34 @@ class User
         $this->password = $password;
     }
 
-    public static function createUserFromDBAssocArray($arr): User
+    public static function createUserFromDBAssocArray($arr)
     {
         $user = new User($arr['first_name'], $arr['last_name'], $arr['username'], $arr['email'], $arr['password']);
         $user->setId($arr['id']);
         return $user;
     }
 
-    public function getFirstName(): string
+    public function getFirstName()
     {
         return $this->firstName;
     }
 
-    public function getLastName(): string
+    public function getLastName()
     {
         return $this->lastName;
     }
 
-    public function getUsername(): string
+    public function getUsername()
     {
         return $this->username;
     }
 
-    public function getEmail(): string
+    public function getEmail()
     {
         return $this->email;
     }
 
-    public function getPassword(): string
+    public function getPassword()
     {
         return $this->password;
     }

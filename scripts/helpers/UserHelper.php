@@ -29,7 +29,7 @@ class UserHelper
         return User::createUserFromDBAssocArray($result[0]);
     }
 
-    public static function login($username, $password): User|null
+    public static function login($username, $password)
     {
         $user = UserHelper::getUserByUsername($username);
         if ($user != null) {

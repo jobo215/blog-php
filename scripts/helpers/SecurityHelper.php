@@ -11,4 +11,11 @@ class SecurityHelper
         }
     }
 
+    public static function preventUnauthorizedPostEdit($creator)
+    {
+        if (SessionHelper::getLoggedUserId() != $creator) {
+            header("Location: ../posts/posts.php");
+        }
+    }
+
 }

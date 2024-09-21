@@ -58,7 +58,7 @@ if (isset($_GET) && isset($_GET['id']) && $_GET["id"]) {
                 </div>
                 <?php if ($post['userID'] == SessionHelper::getLoggedUserId()): ?>
                     <div class="post-actions">
-                        <button class="edit-btn">Edit</button>
+                        <button class="edit-btn" id="edit-btn">Edit</button>
                         <button class="delete-btn" id="delete-btn">Delete</button>
                     </div>
                 <?php endif ?>
@@ -98,7 +98,6 @@ if (isset($_GET) && isset($_GET['id']) && $_GET["id"]) {
                 </div>
             </div>
         <?php endif ?>
-        <?php include './footer.php'; ?>
     </div>
 
     <div class="overlay" id="deleteOverlay">
@@ -108,7 +107,7 @@ if (isset($_GET) && isset($_GET['id']) && $_GET["id"]) {
             <button class="confirm-btn" id="overlay-delete">Delete</button>
         </div>
         <form action="../scripts/posts/delete.php" method="POST" id="delete-form">
-            <input type="hidden" name="postID" value="<?= $postID ?>">
+            <input type="hidden" name="postID" id="postID" value="<?= $postID ?>">
         </form>
     </div>
 </body>

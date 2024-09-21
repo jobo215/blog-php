@@ -10,4 +10,10 @@ $(document).ready(function () {
   $("#overlay-delete").click(function () {
     $("#delete-form").submit();
   });
+
+  $("#edit-btn").click(function () {
+    let url = window.location.href;
+    url = url.substring(0, url.lastIndexOf("/"));
+    window.location.href = url + "/edit.php?id=" + $("#postID").val();
+  });
 });

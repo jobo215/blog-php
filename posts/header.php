@@ -70,11 +70,20 @@
     }
 </style>
 
+<?php
+$pathArray = explode('/', $_SERVER['REQUEST_URI']);
+$file = $pathArray[count($pathArray) - 1];
+?>
+
 <div class="header">
     <div class="website-name">My Blog</div>
 
     <div class="header-buttons">
-        <a href="/create-post" class="create-post-btn">Create Post</a>
+        <?php if ($file != 'create.php'): ?>
+            <a href="./create.php" class="create-post-btn">Create Post</a>
+        <?php else: ?>
+            <a href="./posts.php" class="create-post-btn">Posts</a>
+        <?php endif ?>
         <a href="../scripts/logout.php" class="logout-btn">Logout</a>
     </div>
 </div>
