@@ -5,6 +5,14 @@ include '../models/User.php';
 
 class UserHelper
 {
+    /**
+     * Method which creates user
+     * @param string $firstName Users first name
+     * @param string $lastName Users last name
+     * @param string $username Users username
+     * @param int $password Users password
+     * @return User|null Method returns User if it's created successfully, else returns null
+     */
     public static function createUser($firstName, $lastName, $username, $email, $password)
     {
         $hashedPassword = md5($password);
@@ -16,6 +24,11 @@ class UserHelper
         return new User($firstName, $lastName, $username, $email, $hashedPassword);
     }
 
+    /**
+     * Method which gets user by it's username
+     * @param string $username Users username
+     * @return User|null Method returns User if it's found, else returns null
+     */
     public static function getUserByUsername($username)
     {
         $stmt = Database::getInstance()->getConnection()->prepare("SELECT * FROM users WHERE username = ?");
@@ -29,6 +42,12 @@ class UserHelper
         return User::createUserFromDBAssocArray($result[0]);
     }
 
+    /**
+     * Method which logs user in
+     * @param string $username Users username
+     * @param int $password Users password
+     * @return User|null Method returns User if it's logged in successfully, else returns null
+     */
     public static function login($username, $password)
     {
         $user = UserHelper::getUserByUsername($username);

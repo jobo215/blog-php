@@ -2,6 +2,11 @@
 
 class CommentHelper
 {
+    /**
+     * Method for getting comments by post Id
+     * @param int $postID Post id.
+     * @return array Array with post data.
+     */
 
     public static function getCommentsByPostId($postID)
     {
@@ -11,6 +16,13 @@ class CommentHelper
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
+    /**
+     * Method which creates comment 
+     * @param string $content Comment content.
+     * @param int $userID ID of user whom commented.
+     * @param int $postID Post id.
+     * @return bool Bool value if comment is created successfully or not
+     */
     public static function createComment($content, $userID, $postID)
     {
         $stmt = Database::getInstance()->getConnection()->prepare("INSERT INTO `comment`(`content`, `created_date`, `commenter`, `post`) VALUES (?,now(),?,?)");

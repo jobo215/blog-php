@@ -2,6 +2,10 @@
 
 class ValidationHelper
 {
+    /**
+     * Method which sets errors on registration
+     * @param string $errorMessage Error message
+     */
 
     public static function setRegisterError($errorMessage)
     {
@@ -11,6 +15,11 @@ class ValidationHelper
         $_SESSION['ERROR']['REGISTER_ERROR_MESSAGE'] = $errorMessage;
     }
 
+    /**
+     * Method which sets success message on registration
+     * @param string $message Success message
+     */
+
     public static function setRegistrationSuccessMessage($message)
     {
         ValidationHelper::setSession();
@@ -19,6 +28,9 @@ class ValidationHelper
         $_SESSION['SUCCESS']['REGISTER_SUCCESS_MESSAGE'] = $message;
     }
 
+    /**
+     * Method which hide registration error
+     */
     public static function hideRegistrationMessagesOnRedirect()
     {
         $path = explode("/", $_SERVER['HTTP_REFERER']);
@@ -29,6 +41,9 @@ class ValidationHelper
         }
     }
 
+    /**
+     * Method which hide login error when user come from other page
+     */
     public static function hideLoginMessageOnRedirect()
     {
         ValidationHelper::setSession();
@@ -41,6 +56,10 @@ class ValidationHelper
         }
     }
 
+    /**
+     * Method which sets login error message
+     * @param string $message Login error message
+     */
     public static function setLoginError($message)
     {
         ValidationHelper::setSession();
@@ -48,12 +67,18 @@ class ValidationHelper
         $_SESSION['ERROR']['LOGIN_ERROR_MESSAGE'] = $message;
     }
 
+    /**
+     * Method which hide login error message
+     */
     public static function hideLoginError()
     {
         ValidationHelper::setSession();
         $_SESSION['ERROR']['LOGIN_ERROR'] = false;
     }
 
+    /**
+     * Method which starts session
+     */
     private static function setSession()
     {
         if (!isset($_SESSION)) {

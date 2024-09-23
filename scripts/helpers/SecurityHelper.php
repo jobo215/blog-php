@@ -3,6 +3,9 @@
 class SecurityHelper
 {
 
+    /**
+     * Method which prevent unauthorized users to enter pages
+     */
     public static function preventUnauthorizedUsers()
     {
         if (!SessionHelper::isUserLoggedIn()) {
@@ -10,6 +13,10 @@ class SecurityHelper
             header("Location: ../index.php");
         }
     }
+
+    /**
+     * Method which prevent unauthorized user to edit post
+     */
 
     public static function preventUnauthorizedPostEdit($creator)
     {
